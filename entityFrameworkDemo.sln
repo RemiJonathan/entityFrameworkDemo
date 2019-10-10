@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "entityFrameworkDemo", "entityFrameworkDemo\entityFrameworkDemo.csproj", "{99FBA8C0-3343-4FA2-8A39-691333746C3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{D360899E-83F2-4878-A419-A7033868A5A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99FBA8C0-3343-4FA2-8A39-691333746C3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99FBA8C0-3343-4FA2-8A39-691333746C3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99FBA8C0-3343-4FA2-8A39-691333746C3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99FBA8C0-3343-4FA2-8A39-691333746C3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D360899E-83F2-4878-A419-A7033868A5A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D360899E-83F2-4878-A419-A7033868A5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D360899E-83F2-4878-A419-A7033868A5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D360899E-83F2-4878-A419-A7033868A5A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1976B61-9AD7-4B98-9633-E73BD801954B}
+	EndGlobalSection
+EndGlobal
