@@ -54,21 +54,21 @@ namespace Database
             return myDb.Customers.Find(id);
         }
 
-        public static Customer AddCustomer(Customer p)
+        public static Customer AddCustomer(Customer c)
         {
-            myDb.Customers.Add(p);
+            myDb.Customers.Add(c);
             myDb.SaveChanges();
 
-            return p;
+            return c;
         }
 
-        public static Customer UpdateCustomer(int id, Customer p)
+        public static Customer UpdateCustomer(int id, Customer c)
         {
-            myDb.Customers.Find(id).CustomerFirstName = p.CustomerFirstName;
-            myDb.Customers.Find(id).CustomerLastName = p.CustomerLastName;
+            myDb.Customers.Find(id).CustomerFirstName = c.CustomerFirstName;
+            myDb.Customers.Find(id).CustomerLastName = c.CustomerLastName;
             myDb.SaveChanges();
 
-            return p;
+            return c;
         }
 
         public static Customer DeleteCustomer(int id)
@@ -89,22 +89,22 @@ namespace Database
             return myDb.Sales.Find(id);
         }
 
-        public static Sale AddSale(Sale p)
+        public static Sale AddSale(Sale s)
         {
-            myDb.Sales.Add(p);
+            myDb.Sales.Add(s);
             myDb.SaveChanges();
 
-            return p;
+            return s;
         }
 
-        public static Sale UpdateSale(int id, Sale p)
+        public static Sale UpdateSale(int id, Sale s)
         {
-            myDb.Sales.Find(id).CustomerId = p.CustomerId;
-            myDb.Sales.Find(id).ProductId = p.ProductId;
-            myDb.Sales.Find(id).SaleDate = p.SaleDate;
+            myDb.Sales.Find(id).CustomerId = s.CustomerId;
+            myDb.Sales.Find(id).ProductId = s.ProductId;
+            myDb.Sales.Find(id).SaleDate = s.SaleDate;
             myDb.SaveChanges();
 
-            return p;
+            return s;
         }
 
         public static Sale DeleteSale(int id)
