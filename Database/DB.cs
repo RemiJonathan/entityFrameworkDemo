@@ -78,5 +78,41 @@ namespace Database
             myDb.SaveChanges();
             return Customer;
         }
+
+        public static IEnumerable<Sale> GetSales()
+        {
+            return myDb.Sales.ToList();
+        }
+
+        public static Sale GetSale(int id)
+        {
+            return myDb.Sales.Find(id);
+        }
+
+        public static Sale AddSale(Sale p)
+        {
+            myDb.Sales.Add(p);
+            myDb.SaveChanges();
+
+            return p;
+        }
+
+        public static Sale UpdateSale(int id, Sale p)
+        {
+            myDb.Sales.Find(id).CustomerId = p.CustomerId;
+            myDb.Sales.Find(id).ProductId = p.ProductId;
+            myDb.Sales.Find(id).SaleDate = p.SaleDate;
+            myDb.SaveChanges();
+
+            return p;
+        }
+
+        public static Sale DeleteSale(int id)
+        {
+            Sale Sale = myDb.Sales.Find(id);
+            myDb.Sales.Remove(Sale);
+            myDb.SaveChanges();
+            return Sale;
+        }
     }
 }
