@@ -31,8 +31,52 @@ namespace Database
         {
             myDb.Products.Find(id).ProductDescription = p.ProductDescription;
             myDb.Products.Find(id).ProductUpc = p.ProductUpc;
+            myDb.SaveChanges();
 
             return p;
+        }
+        
+        public static Product DeleteProduct(int id)
+        {
+            Product product = myDb.Products.Find(id);
+            myDb.Products.Remove(product);
+            myDb.SaveChanges();
+            return product;
+        }
+
+        public static IEnumerable<Customer> GetCustomers()
+        {
+            return myDb.Customers.ToList();
+        }
+
+        public static Customer GetCustomer(int id)
+        {
+            return myDb.Customers.Find(id);
+        }
+
+        public static Customer AddCustomer(Customer p)
+        {
+            myDb.Customers.Add(p);
+            myDb.SaveChanges();
+
+            return p;
+        }
+
+        public static Customer UpdateCustomer(int id, Customer p)
+        {
+            myDb.Customers.Find(id).CustomerFirstName = p.CustomerFirstName;
+            myDb.Customers.Find(id).CustomerLastName = p.CustomerLastName;
+            myDb.SaveChanges();
+
+            return p;
+        }
+
+        public static Customer DeleteCustomer(int id)
+        {
+            Customer Customer = myDb.Customers.Find(id);
+            myDb.Customers.Remove(Customer);
+            myDb.SaveChanges();
+            return Customer;
         }
     }
 }
