@@ -35,7 +35,9 @@ namespace entityFrameworkDemo
             var updatingCustomer = new Customer();
             updatingCustomer.CustomerFirstName = "Brendan";
             updatingCustomer.CustomerLastName = "Wood";
-            Console.WriteLine("Updated Customer {0}, FirstName: {1}, LastName: {2}", newCustomerId, updatingCustomer.CustomerFirstName, updatingCustomer.CustomerLastName);
+            var updatedCustomer = DB.UpdateCustomer(newCustomerId,updatingCustomer);
+
+            Console.WriteLine("Updated Customer {0}, FirstName: {1}, LastName: {2}", newCustomerId, updatedCustomer.CustomerFirstName, updatedCustomer.CustomerLastName);
 
             var sales = DB.GetSales().Where(sale => sale.ProductId == newProductId && sale.CustomerId == newCustomerId);
 

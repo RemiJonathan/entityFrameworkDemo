@@ -18,6 +18,7 @@ namespace Database
         public Nullable<System.DateTime> SaleDate { get; set; }
         public int CustomerId { get; set; }
         public int ProductId { get; set; }
+        public Nullable<bool> SaleIsActive { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Product Product { get; set; }

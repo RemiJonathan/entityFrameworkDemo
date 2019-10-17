@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Demo1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Demo1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerId" />
@@ -12,6 +12,7 @@
           <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerFirstName" Type="varchar" MaxLength="50" />
           <Property Name="CustomerLastName" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerIsActive" Type="bit" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -20,6 +21,7 @@
           <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductDescription" Type="varchar" MaxLength="50" />
           <Property Name="ProductUpc" Type="nchar" MaxLength="13" />
+          <Property Name="ProductIsActive" Type="bit" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -29,6 +31,7 @@
           <Property Name="SaleDate" Type="datetime" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="SaleIsActive" Type="bit" />
         </EntityType>
         <Association Name="FK_Sale_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
@@ -67,8 +70,7 @@
             <End Role="Sale" EntitySet="Sale" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Demo1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -80,6 +82,7 @@
           <Property Name="CustomerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CustomerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_Sale_Customer" FromRole="Customer" ToRole="Sale" />
+          <Property Name="CustomerIsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -89,6 +92,7 @@
           <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProductUpc" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_Sale_Product" FromRole="Product" ToRole="Sale" />
+          <Property Name="ProductIsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -100,6 +104,7 @@
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Sale_Customer" FromRole="Sale" ToRole="Customer" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Sale_Product" FromRole="Sale" ToRole="Product" />
+          <Property Name="SaleIsActive" Type="Boolean" />
         </EntityType>
         <Association Name="FK_Sale_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
@@ -147,6 +152,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="Demo1Model.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerIsActive" ColumnName="CustomerIsActive" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
                 <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
@@ -156,6 +162,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="Demo1Model.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductIsActive" ColumnName="ProductIsActive" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
                 <ScalarProperty Name="ProductUpc" ColumnName="ProductUpc" />
@@ -165,6 +172,7 @@
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="Demo1Model.Sale">
               <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="SaleIsActive" ColumnName="SaleIsActive" />
                 <ScalarProperty Name="SaleId" ColumnName="SaleId" />
                 <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />

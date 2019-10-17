@@ -37,16 +37,17 @@ namespace Database
 
             return p;
         }
-        
+
         public static Product DeleteProduct(int id)
         {
-            Product product = myDb.Products.Find(id);
-            myDb.Products.Remove(product);
+            Product Product = myDb.Products.Find(id);
+            myDb.Products.Find(id).ProductIsActive = false;
             myDb.SaveChanges();
-            return product;
+            return Product;
         }
+    
 
-        public static IEnumerable<Customer> GetCustomers()
+    public static IEnumerable<Customer> GetCustomers()
         {
             return myDb.Customers.ToList();
         }
@@ -76,7 +77,7 @@ namespace Database
         public static Customer DeleteCustomer(int id)
         {
             Customer Customer = myDb.Customers.Find(id);
-            myDb.Customers.Remove(Customer);
+            myDb.Customers.Find(id).CustomerIsActive = false;
             myDb.SaveChanges();
             return Customer;
         }
@@ -104,7 +105,6 @@ namespace Database
             myDb.Sales.Find(id).CustomerId = s.CustomerId;
             myDb.Sales.Find(id).ProductId = s.ProductId;
             myDb.Sales.Find(id).SaleDate = s.SaleDate;
-            myDb.Entry(myDb.Sales.Find(id)).State = EntityState.Modified;
             myDb.SaveChanges();
 
             return s;
@@ -113,7 +113,7 @@ namespace Database
         public static Sale DeleteSale(int id)
         {
             Sale Sale = myDb.Sales.Find(id);
-            myDb.Sales.Remove(Sale);
+            myDb.Sales.Find(id).SaleIsActive = false;
             myDb.SaveChanges();
             return Sale;
         }

@@ -23,6 +23,7 @@ namespace Database
         public int ProductId { get; set; }
         public string ProductDescription { get; set; }
         public string ProductUpc { get; set; }
+        public Nullable<bool> ProductIsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sales { get; set; }
