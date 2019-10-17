@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.Entity;
 namespace Database
 {
     public class DB
     {
+        
+
         private static Demo1Entities myDb = new Demo1Entities();
         public static IEnumerable<Product> GetProducts()
         {
@@ -102,6 +104,7 @@ namespace Database
             myDb.Sales.Find(id).CustomerId = s.CustomerId;
             myDb.Sales.Find(id).ProductId = s.ProductId;
             myDb.Sales.Find(id).SaleDate = s.SaleDate;
+            myDb.Entry(myDb.Sales.Find(id)).State = EntityState.Modified;
             myDb.SaveChanges();
 
             return s;
